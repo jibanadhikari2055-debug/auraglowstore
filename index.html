@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Glow Store | Glow With Confidence</title>
+<meta name="description" content="Aura Glow Store - Skincare, beauty and personal care essentials in Kathmandu, Nepal.">
+
+<style>
+/* ==========================================================
+   SHOP INFO QUICK REFERENCE (edit here if needed)
+   Shop Name: Aura Glow Store
+   WhatsApp: 9768995097 / 9867872133
+   Email: tekendraadhikari42@gmail.com
+   ========================================================== */
+
+:root{
+  --primary:#D98C8C;
+  --primary-dark:#c26f6f;
+  --secondary:#F8E9E7;
+  --bg:#FFF9F8;
+  --dark:#2F2F2F;
+  --white:#FFFFFF;
+  --radius:14px;
+  --shadow:0 4px 18px rgba(47,47,47,0.08);
+  --transition:0.25s ease;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%;display:block;}
+
+a{text-decoration:none;color:inherit;}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+  border:none;
+  outline:none;
+}
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--white);
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 20px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.brand{
+  display:flex;
+  flex-direction:column;
+}
+
+.brand-name{
+  font-size:1.4rem;
+  font-weight:700;
+  color:var(--primary);
+}
+
+.brand-tag{
+  font-size:0.7rem;
+  color:#8a8a8a;
+  letter-spacing:0.5px;
+}
+
+nav.main-nav{
+  display:flex;
+  gap:24px;
+}
+
+nav.main-nav a{
+  font-weight:600;
+  font-size:0.95rem;
+  color:var(--dark);
+  transition:color var(--transition);
+}
+
+nav.main-nav a:hover, nav.main-nav a:focus{
+  color:var(--primary);
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.cart-btn{
+  position:relative;
+  background:var(--secondary);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  transition:transform var(--transition);
+}
+
+.cart-btn:hover{transform:scale(1.08);}
+
+.cart-badge{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  background:var(--primary);
+  color:var(--white);
+  font-size:0.65rem;
+  font-weight:700;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  padding:6px;
+}
+
+.hamburger span{
+  width:24px;
+  height:2px;
+  background:var(--dark);
+  border-radius:2px;
+}
+
+.mobile-nav{
+  display:none;
+  flex-direction:column;
+  background:var(--white);
+  padding:10px 20px 20px;
+  gap:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+}
+
+.mobile-nav a{
+  font-weight:600;
+  padding:8px 0;
+  border-bottom:1px solid var(--secondary);
+}
+
+.mobile-nav.open{display:flex;}
+
+@media (max-width:768px){
+  nav.main-nav{display:none;}
+  .hamburger{display:flex;}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--secondary),var(--bg));
+  padding:70px 20px 60px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:2.4rem;
+  color:var(--primary-dark);
+  margin-bottom:14px;
+  font-weight:800;
+}
+
+.hero p{
+  max-width:560px;
+  margin:0 auto 28px;
+  color:#555;
+  font-size:1.05rem;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:13px 26px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:0.95rem;
+  transition:transform var(--transition), box-shadow var(--transition);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.btn:hover{transform:translateY(-2px);}
+
+.btn-primary{
+  background:var(--primary);
+  color:var(--white);
+  box-shadow:0 6px 16px rgba(217,140,140,0.35);
+}
+
+.btn-primary:hover{background:var(--primary-dark);}
+
+.btn-outline{
+  background:var(--white);
+  color:var(--primary);
+  border:2px solid var(--primary);
+}
+
+.btn-whatsapp{
+  background:#25D366;
+  color:var(--white);
+}
+
+/* ---------- CATEGORY FILTER ---------- */
+.categories{
+  padding:36px 20px 10px;
+}
+
+.categories h2, .products h2, .contact h2{
+  text-align:center;
+  font-size:1.6rem;
+  margin-bottom:22px;
+  color:var(--primary-dark);
+}
+
+.category-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+}
+
+.category-btn{
+  background:var(--white);
+  border:1.5px solid var(--secondary);
+  padding:9px 18px;
+  border-radius:20px;
+  font-weight:600;
+  font-size:0.85rem;
+  color:var(--dark);
+  transition:all var(--transition);
+}
+
+.category-btn:hover{border-color:var(--primary);}
+
+.category-btn.active{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:var(--white);
+}
+
+/* ---------- PRODUCTS ---------- */
+.products{
+  padding:30px 20px 60px;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
+  gap:22px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.product-card{
+  background:var(--white);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform var(--transition), box-shadow var(--transition);
+  display:flex;
+  flex-direction:column;
+}
+
+.product-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(47,47,47,0.12);
+}
+
+.product-img-wrap{
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background:var(--secondary);
+}
+
+.product-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform var(--transition);
+}
+
+.product-card:hover .product-img-wrap img{transform:scale(1.05);}
+
+.product-info{
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  flex:1;
+}
+
+.product-name{
+  font-size:1.05rem;
+  font-weight:700;
+}
+
+.product-category{
+  display:inline-block;
+  background:var(--secondary);
+  color:var(--primary-dark);
+  font-size:0.7rem;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:12px;
+  width:fit-content;
+}
+
+.product-desc{
+  font-size:0.85rem;
+  color:#666;
+  flex:1;
+}
+
+.product-price{
+  font-size:1.15rem;
+  font-weight:800;
+  color:var(--primary-dark);
+}
+
+.add-cart-btn{
+  margin-top:8px;
+  background:var(--primary);
+  color:var(--white);
+  padding:10px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:0.9rem;
+  transition:background var(--transition), transform var(--transition);
+}
+
+.add-cart-btn:hover{background:var(--primary-dark);}
+
+.add-cart-btn.bump{animation:bump 0.35s ease;}
+
+@keyframes bump{
+  0%{transform:scale(1);}
+  40%{transform:scale(0.93);}
+  100%{transform:scale(1);}
+}
+
+.no-products{
+  text-align:center;
+  color:#888;
+  padding:40px 0;
+  grid-column:1/-1;
+}
+
+/* ---------- STICKY CART BUTTON ---------- */
+.sticky-cart{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  background:var(--primary);
+  color:var(--white);
+  padding:14px 20px;
+  border-radius:30px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 8px 20px rgba(217,140,140,0.45);
+  z-index:900;
+  transition:transform var(--transition);
+}
+
+.sticky-cart:hover{transform:scale(1.06);}
+
+.sticky-cart.pulse{animation:pulse 0.4s ease;}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.18);}
+  100%{transform:scale(1);}
+}
+
+/* ---------- FLOATING WHATSAPP ---------- */
+.floating-whatsapp{
+  position:fixed;
+  bottom:24px;
+  left:24px;
+  background:#25D366;
+  color:var(--white);
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  box-shadow:0 8px 20px rgba(37,211,102,0.45);
+  z-index:900;
+  transition:transform var(--transition);
+}
+
+.floating-whatsapp:hover{transform:scale(1.08);}
+
+@media (max-width:480px){
+  .sticky-cart{right:16px;bottom:16px;padding:12px 16px;}
+  .floating-whatsapp{left:16px;bottom:16px;width:50px;height:50px;font-size:1.4rem;}
+}
+
+/* ---------- CART DRAWER ---------- */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  z-index:1500;
+  display:none;
+}
+
+.overlay.show{display:block;}
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:100%;
+  max-width:400px;
+  height:100%;
+  background:var(--white);
+  z-index:1600;
+  transition:right 0.3s ease;
+  display:flex;
+  flex-direction:column;
+  box-shadow:-6px 0 20px rgba(0,0,0,0.15);
+}
+
+.cart-drawer.open{right:0;}
+
+.cart-header{
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--secondary);
+}
+
+.cart-header h3{color:var(--primary-dark);font-size:1.2rem;}
+
+.close-btn{
+  background:var(--secondary);
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  font-size:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cart-items{
+  flex:1;
+  overflow-y:auto;
+  padding:14px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.cart-empty{
+  text-align:center;
+  color:#888;
+  margin-top:40px;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  border-bottom:1px solid var(--secondary);
+  padding-bottom:12px;
+}
+
+.cart-item img{
+  width:64px;
+  height:64px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.cart-item-info{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.cart-item-name{font-weight:700;font-size:0.9rem;}
+.cart-item-price{color:var(--primary-dark);font-weight:700;font-size:0.85rem;}
+
+.qty-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.qty-btn{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:var(--secondary);
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.qty-btn:hover{background:var(--primary);color:var(--white);}
+
+.remove-btn{
+  color:#c0392b;
+  font-size:0.75rem;
+  font-weight:700;
+  text-decoration:underline;
+  align-self:flex-start;
+}
+
+.cart-item-subtotal{
+  font-size:0.8rem;
+  color:#666;
+}
+
+.cart-footer{
+  padding:16px 20px 20px;
+  border-top:1px solid var(--secondary);
+}
+
+.grand-total-row{
+  display:flex;
+  justify-content:space-between;
+  font-weight:800;
+  font-size:1.1rem;
+  margin-bottom:14px;
+  color:var(--primary-dark);
+}
+
+.place-order-btn{
+  width:100%;
+  background:var(--primary);
+  color:var(--white);
+  padding:14px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:1rem;
+}
+
+.place-order-btn:hover{background:var(--primary-dark);}
+
+.place-order-btn:disabled{
+  background:#ccc;
+  cursor:not-allowed;
+}
+
+/* ---------- CHECKOUT MODAL ---------- */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
+}
+
+.modal.show{display:flex;}
+
+.modal-box{
+  background:var(--white);
+  border-radius:var(--radius);
+  max-width:460px;
+  width:100%;
+  max-height:90vh;
+  overflow-y:auto;
+  padding:26px;
+  position:relative;
+}
+
+.modal-box h3{
+  color:var(--primary-dark);
+  margin-bottom:6px;
+  font-size:1.3rem;
+}
+
+.modal-note{
+  font-size:0.82rem;
+  color:#666;
+  margin-bottom:18px;
+  background:var(--secondary);
+  padding:10px 12px;
+  border-radius:8px;
+}
+
+.form-group{margin-bottom:14px;}
+
+.form-group label{
+  display:block;
+  font-weight:700;
+  font-size:0.85rem;
+  margin-bottom:5px;
+}
+
+.form-group input, .form-group textarea{
+  width:100%;
+  padding:11px 12px;
+  border:1.5px solid var(--secondary);
+  border-radius:8px;
+  font-size:0.9rem;
+  font-family:inherit;
+  transition:border-color var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus{
+  border-color:var(--primary);
+}
+
+.modal-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  background:var(--secondary);
+  width:30px;
+  height:30px;
+  border-radius:50%;
+}
+
+.submit-order-btn{
+  width:100%;
+  background:var(--primary);
+  color:var(--white);
+  padding:13px;
+  border-radius:10px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+.submit-order-btn:hover{background:var(--primary-dark);}
+
+.submit-order-btn:disabled{background:#ccc;cursor:not-allowed;}
+
+/* ---------- SUCCESS MODAL ---------- */
+.success-icon{
+  width:64px;
+  height:64px;
+  background:#25D366;
+  color:var(--white);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  margin:0 auto 16px;
+}
+
+.modal-box.success{text-align:center;}
+
+/* ---------- CONTACT ---------- */
+.contact{
+  background:var(--secondary);
+  padding:60px 20px;
+  text-align:center;
+}
+
+.contact .brand-name{font-size:1.6rem;}
+.contact-info{margin:16px 0 26px;color:#555;line-height:1.8;}
+
+.contact-buttons{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--dark);
+  color:#ddd;
+  padding:40px 20px 20px;
+}
+
+.footer-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:24px;
+}
+
+footer h4{
+  color:var(--white);
+  margin-bottom:12px;
+  font-size:1rem;
+}
+
+footer .brand-name{color:var(--primary);}
+
+footer p, footer a{
+  font-size:0.85rem;
+  color:#bbb;
+  margin-bottom:6px;
+  display:block;
+}
+
+footer a:hover{color:var(--primary);}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:30px;
+  padding-top:18px;
+  border-top:1px solid #444;
+  font-size:0.8rem;
+  color:#999;
+}
+
+/* Accessibility focus */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--primary-dark);
+  outline-offset:2px;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-name">Aura Glow Store</span>
+      <span class="brand-tag">Glow With Confidence</span>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-btn" id="cartOpenBtn" aria-label="Open cart">
+        🛍️
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#categories">Categories</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <h1>Glow With Confidence</h1>
+  <p>Discover skincare, beauty and personal care essentials selected to help you look and feel your best.</p>
+  <div class="hero-buttons">
+    <a href="#shop" class="btn btn-primary">Shop Now</a>
+    <a id="heroWhatsapp" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
+  </div>
+</section>
+
+<!-- ================= CATEGORY FILTER ================= -->
+<section class="categories" id="categories">
+  <h2>Shop by Category</h2>
+  <div class="category-buttons" id="categoryButtons"></div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="products" id="shop">
+  <h2>Our Products</h2>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- ================= STICKY CART BUTTON ================= -->
+<button class="sticky-cart" id="stickyCartBtn" aria-label="View cart">
+  🛒 <span id="stickyCartCount">0</span>
+</button>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a id="floatingWhatsapp" href="#" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- ================= OVERLAY ================= -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ================= CART DRAWER ================= -->
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="close-btn" id="cartCloseBtn" aria-label="Close cart">✕</button>
+  </div>
+
+  <div class="cart-items" id="cartItemsContainer">
+    <p class="cart-empty">Your cart is empty.</p>
+  </div>
+
+  <div class="cart-footer">
+    <div class="grand-total-row">
+      <span>Grand Total</span>
+      <span id="grandTotalDisplay">₹0</span>
+    </div>
+    <button class="place-order-btn" id="placeOrderBtn" disabled>Place Order</button>
+  </div>
+</aside>
+
+<!-- ================= CHECKOUT MODAL ================= -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+    <button class="modal-close" id="checkoutCloseBtn" aria-label="Close form">✕</button>
+    <h3>Complete Your Order</h3>
+    <p class="modal-note">Your order will be sent to Aura Glow Store. We will contact you on WhatsApp to confirm your order, availability and delivery.</p>
+
+    <!-- ==========================================================
+         FORMSPREE FORM
+         IMPORTANT:
+         Replace YOUR_FORM_ID with your real Formspree form ID.
+         Sign up free at https://formspree.io to get one.
+         ========================================================== -->
+    <form id="orderForm" action="https://formspree.io/f/xjykyrnj" method="POST">
+
+
+      <div class="form-group">
+        <label for="customerName">Customer Name *</label>
+        <input type="text" id="customerName" name="customer_name" required aria-required="true">
+      </div>
+
+      <div class="form-group">
+        <label for="customerPhone">Phone Number *</label>
+        <input type="tel" id="customerPhone" name="customer_phone" required aria-required="true">
+      </div>
+
+      <div class="form-group">
+        <label for="customerAddress">Delivery Address *</label>
+        <textarea id="customerAddress" name="customer_address" rows="2" required aria-required="true"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="specialInstructions">Special Instructions (optional)</label>
+        <textarea id="specialInstructions" name="special_instructions" rows="2"></textarea>
+      </div>
+
+      <!-- Hidden fields populated by JavaScript before submit -->
+      <input type="hidden" name="order_summary" id="orderSummary">
+      <input type="hidden" name="grand_total" id="grandTotal">
+      <input type="hidden" name="_subject" value="New Order - Aura Glow Store">
+
+      <button type="submit" class="submit-order-btn" id="submitOrderBtn">Submit Order</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= SUCCESS MODAL ================= -->
+<div class="modal" id="successModal">
+  <div class="modal-box success">
+    <div class="success-icon">✓</div>
+    <h3>Order placed successfully!</h3>
+    <p id="successMessage" style="margin:10px 0 6px;color:#555;">Aura Glow Store will contact you on your phone to confirm your order.</p>
+    <p style="margin-bottom:20px;color:#555;">Thank you for shopping with Aura Glow Store.</p>
+    <a id="successWhatsapp" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" style="justify-content:center;width:100%;">💬 Chat on WhatsApp</a>
+    <button id="successCloseBtn" style="margin-top:14px;background:none;color:var(--primary-dark);font-weight:700;text-decoration:underline;">Close</button>
+  </div>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="brand-name">Aura Glow Store</div>
+  <div class="brand-tag">Glow With Confidence</div>
+  <div class="contact-info">
+    Kathmandu, Nepal<br>
+    WhatsApp: 9768995097 / 9867872133<br>
+    Email: tekendraadhikari42@gmail.com
+  </div>
+  <div class="contact-buttons">
+    <a id="contactWhatsapp" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
+    <a href="mailto:tekendraadhikari42@gmail.com" class="btn btn-outline">✉️ Email Us</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4 class="brand-name">Aura Glow Store</h4>
+      <p>Glow With Confidence</p>
+      <p>Kathmandu, Nepal</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Customer Support</h4>
+      <a id="footerWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp: 9768995097</a>
+      <p>WhatsApp: 9867872133</p>
+      <a href="mailto:tekendraadhikari42@gmail.com">tekendraadhikari42@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Aura Glow Store. All rights reserved.</div>
+</footer>
+
+<script>
+/* ==========================================================
+   SHOP CONFIGURATION - EDIT HERE
+   ========================================================== */
+const SHOP_NAME = "Aura Glow Store";
+const WHATSAPP_PRIMARY = "9768995097";   // used for wa.me links (no + or spaces)
+const WHATSAPP_SECONDARY = "9867872133"; // shown as text only
+const OWNER_EMAIL = "tekendraadhikari42@gmail.com";
+
+const WHATSAPP_MESSAGE_DEFAULT = "Hello Aura Glow Store, I would like to know more about your products.";
+const WHATSAPP_MESSAGE_ORDER = "Hello Aura Glow Store, I have just placed an order through your website. Please confirm my order.";
+
+function waLink(message){
+  return "https://wa.me/" + WHATSAPP_PRIMARY + "?text=" + encodeURIComponent(message);
+}
+
+/* ==========================================================
+   PRODUCTS - ADD NEW PRODUCTS HERE
+   Copy the block below and edit the values for each new product.
+   Only use REAL ImgBB (or other real) image URLs.
+   ========================================================== */
+const products = [
+    {
+        name: "Korean Sunscreen",
+        price: 1200,
+        category: "Skincare",
+        image: "https://i.ibb.co/rKbc9rL5/The-Viral-Korean-Sunscreen-Worth-the-Hype.jpg",
+        description: "A lightweight Korean sunscreen that helps protect your skin from daily sun exposure while keeping it fresh and comfortable.",
+        alt: "Korean sunscreen for daily skincare"
+    },
+    {
+        name: "SP-6 Probiotic Whitening Toothpaste",
+        price: 799,
+        category: "Personal Care",
+        image: "https://i.ibb.co/nsNhfKjz/MSDRWIKEY-SP-6-Probiotic-Whitening-Toothpaste-6-Probiotics-Fluoride-Free-Enamel-Safe.jpg",
+        description: "A probiotic toothpaste designed for everyday oral care with a fresh and clean feeling.",
+        alt: "SP-6 probiotic whitening toothpaste for personal care"
+    }
+    // ==========================================================
+    // ADD NEW PRODUCTS BELOW THIS LINE - copy this block:
+    // ,{
+    //     name: "Product Name",
+    //     price: 0,
+    //     category: "Skincare",
+    //     image: "https://real-image-url.jpg",
+    //     description: "Short description here.",
+    //     alt: "Descriptive alt text"
+    // }
+    // ==========================================================
+];
+
+const CATEGORIES = ["All","Skincare","Face Wash","Sunscreen","Personal Care","Beauty","Hair Care","Body Care"];
+
+/* ==========================================================
+   STATE
+   ========================================================== */
+let cart = JSON.parse(localStorage.getItem("auraGlowCart") || "[]");
+let activeCategory = "All";
+
+/* ==========================================================
+   RENDER CATEGORY BUTTONS
+   ========================================================== */
+const categoryButtonsEl = document.getElementById("categoryButtons");
+CATEGORIES.forEach(cat => {
+  const btn = document.createElement("button");
+  btn.className = "category-btn" + (cat === "All" ? " active" : "");
+  btn.textContent = cat;
+  btn.setAttribute("aria-label", "Filter by " + cat);
+  btn.addEventListener("click", () => {
+    activeCategory = cat;
+    document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderProducts();
+  });
+  categoryButtonsEl.appendChild(btn);
+});
+
+/* ==========================================================
+   RENDER PRODUCTS
+   ========================================================== */
+const productGrid = document.getElementById("productGrid");
+
+function renderProducts(){
+  productGrid.innerHTML = "";
+  const filtered = activeCategory === "All" ? products : products.filter(p => p.category === activeCategory);
+
+  if(filtered.length === 0){
+    productGrid.innerHTML = '<p class="no-products">No products found in this category yet. Check back soon!</p>';
+    return;
+  }
+
+  filtered.forEach((product, index) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <div class="product-img-wrap">
+        <img src="${product.image}" alt="${product.alt}" loading="lazy">
+      </div>
+      <div class="product-info">
+        <span class="product-category">${product.category}</span>
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-desc">${product.description}</p>
+        <div class="product-price">₹${product.price}</div>
+        <button class="add-cart-btn" data-name="${product.name}" aria-label="Add ${product.name} to cart">Add to Cart</button>
+      </div>
+    `;
+    productGrid.appendChild(card);
+  });
+
+  document.querySelectorAll(".add-cart-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      addToCart(btn.getAttribute("data-name"));
+      btn.classList.add("bump");
+      setTimeout(()=>btn.classList.remove("bump"), 350);
+    });
+  });
+}
+
+/* ==========================================================
+   CART LOGIC
+   ========================================================== */
+function saveCart(){
+  localStorage.setItem("auraGlowCart", JSON.stringify(cart));
+}
+
+function addToCart(name){
+  const product = products.find(p => p.name === name);
+  if(!product) return;
+
+  const existing = cart.find(item => item.name === name);
+  if(existing){
+    existing.qty += 1;
+  }else{
+    cart.push({ name: product.name, price: product.price, image: product.image, qty: 1 });
+  }
+  saveCart();
+  renderCart();
+  pulseStickyCart();
+}
+
+function changeQty(name, delta){
+  const item = cart.find(i => i.name === name);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.name !== name);
+  }
+  saveCart();
+  renderCart();
+}
+
+function removeItem(name){
+  cart = cart.filter(i => i.name !== name);
+  saveCart();
+  renderCart();
+}
+
+function getGrandTotal(){
+  return cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+}
+
+function getCartCount(){
+  return cart.reduce((sum, i) => sum + i.qty, 0);
+}
+
+function pulseStickyCart(){
+  const btn = document.getElementById("stickyCartBtn");
+  btn.classList.add("pulse");
+  setTimeout(()=>btn.classList.remove("pulse"), 400);
+}
+
+const cartItemsContainer = document.getElementById("cartItemsContainer");
+const grandTotalDisplay = document.getElementById("grandTotalDisplay");
+const cartBadge = document.getElementById("cartBadge");
+const stickyCartCount = document.getElementById("stickyCartCount");
+const placeOrderBtn = document.getElementById("placeOrderBtn");
+
+function renderCart(){
+  const count = getCartCount();
+  cartBadge.textContent = count;
+  stickyCartCount.textContent = count;
+
+  if(cart.length === 0){
+    cartItemsContainer.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+    grandTotalDisplay.textContent = "₹0";
+    placeOrderBtn.disabled = true;
+    return;
+  }
+
+  placeOrderBtn.disabled = false;
+  cartItemsContainer.innerHTML = "";
+
+  cart.forEach(item => {
+    const subtotal = item.price * item.qty;
+    const row = document.createElement("div");
+    row.className = "cart-item";
+    row.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" loading="lazy">
+      <div class="cart-item-info">
+        <span class="cart-item-name">${item.name}</span>
+        <span class="cart-item-price">₹${item.price}</span>
+        <div class="qty-controls">
+          <button class="qty-btn" aria-label="Decrease quantity of ${item.name}" data-action="minus" data-name="${item.name}">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" aria-label="Increase quantity of ${item.name}" data-action="plus" data-name="${item.name}">+</button>
+        </div>
+        <span class="cart-item-subtotal">Subtotal: ₹${subtotal}</span>
+        <button class="remove-btn" data-name="${item.name}" aria-label="Remove ${item.name} from cart">Remove</button>
+      </div>
+    `;
+    cartItemsContainer.appendChild(row);
+  });
+
+  grandTotalDisplay.textContent = "₹" + getGrandTotal();
+
+  cartItemsContainer.querySelectorAll('[data-action="plus"]').forEach(btn=>{
+    btn.addEventListener("click", ()=>changeQty(btn.getAttribute("data-name"), 1));
+  });
+  cartItemsContainer.querySelectorAll('[data-action="minus"]').forEach(btn=>{
+    btn.addEventListener("click", ()=>changeQty(btn.getAttribute("data-name"), -1));
+  });
+  cartItemsContainer.querySelectorAll(".remove-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>removeItem(btn.getAttribute("data-name")));
+  });
+}
+
+/* ==========================================================
+   CART DRAWER OPEN/CLOSE
+   ========================================================== */
+const cartDrawer = document.getElementById("cartDrawer");
+const overlay = document.getElementById("overlay");
+
+function openCart(){
+  cartDrawer.classList.add("open");
+  overlay.classList.add("show");
+}
+function closeCart(){
+  cartDrawer.classList.remove("open");
+  overlay.classList.remove("show");
+}
+
+document.getElementById("cartOpenBtn").addEventListener("click", openCart);
+document.getElementById("stickyCartBtn").addEventListener("click", openCart);
+document.getElementById("cartCloseBtn").addEventListener("click", closeCart);
+overlay.addEventListener("click", ()=>{
+  closeCart();
+  closeCheckout();
+  closeSuccess();
+});
+
+/* ==========================================================
+   MOBILE NAV
+   ========================================================== */
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const mobileNav = document.getElementById("mobileNav");
+hamburgerBtn.addEventListener("click", ()=>{
+  mobileNav.classList.toggle("open");
+});
+mobileNav.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click", ()=>mobileNav.classList.remove("open"));
+});
+
+/* ==========================================================
+   CHECKOUT MODAL
+   ========================================================== */
+const checkoutModal = document.getElementById("checkoutModal");
+
+function openCheckout(){
+  closeCart();
+  checkoutModal.classList.add("show");
+  overlay.classList.add("show");
+}
+function closeCheckout(){
+  checkoutModal.classList.remove("show");
+  overlay.classList.remove("show");
+}
+
+placeOrderBtn.addEventListener("click", openCheckout);
+document.getElementById("checkoutCloseBtn").addEventListener("click", closeCheckout);
+
+/* ==========================================================
+   BUILD ORDER SUMMARY & SUBMIT
+   ========================================================== */
+const orderForm = document.getElementById("orderForm");
+const orderSummaryField = document.getElementById("orderSummary");
+const grandTotalField = document.getElementById("grandTotal");
+const submitOrderBtn = document.getElementById("submitOrderBtn");
+
+function buildOrderSummary(){
+  let summary = "";
+  summary += "================================\n";
+  summary += "NEW ORDER - AURA GLOW STORE\n";
+  summary += "================================\n\n";
+
+  summary += "Customer Information\n\n";
+  summary += "Name: " + document.getElementById("customerName").value + "\n";
+  summary += "Phone: " + document.getElementById("customerPhone").value + "\n";
+  summary += "Delivery Address: " + document.getElementById("customerAddress").value + "\n\n";
+
+  const instructions = document.getElementById("specialInstructions").value;
+  summary += "Special Instructions: " + (instructions ? instructions : "None") + "\n\n";
+
+  summary += "--------------------------------\n";
+  summary += "ORDER ITEMS\n";
+  summary += "--------------------------------\n\n";
+
+  cart.forEach(item => {
+    summary += "Product: " + item.name + "\n";
+    summary += "Quantity: " + item.qty + "\n";
+    summary += "Price: ₹" + item.price + "\n";
+    summary += "Subtotal: ₹" + (item.price * item.qty) + "\n\n";
+  });
+
+  summary += "--------------------------------\n";
+  summary += "GRAND TOTAL\n";
+  summary += "--------------------------------\n\n";
+  summary += "₹" + getGrandTotal() + "\n\n";
+  summary += "================================\n\n";
+  summary += "Store: " + SHOP_NAME + "\n";
+  summary += "Location: Kathmandu, Nepal\n\n";
+  summary += "WhatsApp:\n" + WHATSAPP_PRIMARY + "\n" + WHATSAPP_SECONDARY + "\n";
+
+  return summary;
+}
+
+orderForm.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  if(cart.length === 0){
+    alert("Your cart is empty.");
+    return;
+  }
+
+  orderSummaryField.value = buildOrderSummary();
+  grandTotalField.value = "₹" + getGrandTotal();
+
+  submitOrderBtn.disabled = true;
+  submitOrderBtn.textContent = "Submitting...";
+
+  fetch(orderForm.action, {
+    method: "POST",
+    body: new FormData(orderForm),
+    headers: { "Accept": "application/json" }
+  })
+  .then(response => {
+    if(response.ok){
+      // Success: clear cart, close checkout, show confirmation
+      cart = [];
+      saveCart();
+      renderCart();
+      closeCheckout();
+      orderForm.reset();
+      showSuccess();
+    }else{
+      alert("Something went wrong sending your order. Please try again or contact us on WhatsApp.");
+    }
+  })
+  .catch(() => {
+    alert("Network error. Please check your connection or contact us directly on WhatsApp.");
+  })
+  .finally(() => {
+    submitOrderBtn.disabled = false;
+    submitOrderBtn.textContent = "Submit Order";
+  });
+});
+
+/* ==========================================================
+   SUCCESS MODAL
+   ========================================================== */
+const successModal = document.getElementById("successModal");
+
+function showSuccess(){
+  overlay.classList.add("show");
+  successModal.classList.add("show");
+}
+function closeSuccess(){
+  successModal.classList.remove("show");
+  overlay.classList.remove("show");
+}
+document.getElementById("successCloseBtn").addEventListener("click", closeSuccess);
+
+/* ==========================================================
+   WHATSAPP LINKS
+   ========================================================== */
+document.getElementById("heroWhatsapp").href = waLink(WHATSAPP_MESSAGE_DEFAULT);
+document.getElementById("floatingWhatsapp").href = waLink(WHATSAPP_MESSAGE_DEFAULT);
+document.getElementById("contactWhatsapp").href = waLink(WHATSAPP_MESSAGE_DEFAULT);
+document.getElementById("footerWhatsapp").href = waLink(WHATSAPP_MESSAGE_DEFAULT);
+document.getElementById("successWhatsapp").href = waLink(WHATSAPP_MESSAGE_ORDER);
+
+/* ==========================================================
+   INITIAL RENDER
+   ========================================================== */
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>

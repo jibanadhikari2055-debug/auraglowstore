@@ -21,7 +21,9 @@ button{font-family:inherit;cursor:pointer;border:none;outline:none;}
 /* HEADER */
 header{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,0.06);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;max-width:1200px;margin:0 auto;}
-.brand{display:flex;flex-direction:column;}
+.brand{display:flex;align-items:center;gap:9px;}
+.brand-logo{width:42px;height:42px;object-fit:contain;border-radius:10px;flex-shrink:0;background:var(--secondary);}
+.brand-text{display:flex;flex-direction:column;}
 .brand-name{font-size:1.3rem;font-weight:700;color:var(--primary);}
 .brand-tag{font-size:0.68rem;color:#8a8a8a;letter-spacing:0.5px;}
 nav.main-nav{display:flex;gap:22px;}
@@ -62,7 +64,7 @@ nav.main-nav a:hover{color:var(--primary);}
 .products{padding:20px 16px 50px;}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;max-width:1200px;margin:0 auto;}
 @media (min-width:600px){.product-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}}
-.product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative;transition:transform var(--transition);}
+.product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative;transition:transform var(--transition);cursor:pointer;}
 .product-card:hover{transform:translateY(-3px);}
 .discount-badge{position:absolute;top:8px;left:8px;background:var(--primary);color:#fff;font-size:0.68rem;font-weight:800;padding:3px 8px;border-radius:10px;z-index:2;}
 .stock-badge{position:absolute;top:8px;right:8px;background:#c0392b;color:#fff;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:10px;z-index:2;}
@@ -134,6 +136,22 @@ nav.main-nav a:hover{color:var(--primary);}
 .submit-order-btn:hover{background:var(--primary-dark);}
 .error-text{color:#c0392b;font-size:0.78rem;margin-top:6px;display:none;}
 
+/* PRODUCT DETAIL MODAL */
+.detail-box{max-width:460px;}
+.detail-img-wrap{width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--secondary);margin-bottom:14px;}
+.detail-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.detail-badges{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.detail-title{font-size:1.15rem;font-weight:800;margin-bottom:6px;}
+.detail-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;}
+.detail-price{font-size:1.3rem;font-weight:800;color:var(--primary-dark);}
+.detail-original{font-size:0.95rem;color:#999;text-decoration:line-through;}
+.detail-desc{font-size:0.88rem;color:#555;margin-bottom:16px;line-height:1.6;}
+.detail-stock{font-size:0.8rem;font-weight:700;margin-bottom:14px;}
+.detail-stock.in{color:#25a25a;}
+.detail-stock.out{color:#c0392b;}
+.detail-actions{display:flex;gap:10px;}
+.detail-actions .add-cart-btn,.detail-actions .buy-now-btn{padding:12px 6px;font-size:0.85rem;}
+
 /* CONTACT / FOOTER */
 .contact{background:var(--secondary);padding:50px 16px;text-align:center;}
 .contact-info{margin:14px 0 22px;color:#555;line-height:1.8;font-size:0.92rem;}
@@ -142,6 +160,8 @@ footer{background:var(--dark);color:#ddd;padding:36px 16px 20px;}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;}
 footer h4{color:#fff;margin-bottom:10px;font-size:0.95rem;}
 footer .brand-name{color:var(--primary);}
+.footer-brand-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.footer-logo{width:38px;height:38px;object-fit:contain;border-radius:8px;background:#fff;flex-shrink:0;}
 footer p,footer a{font-size:0.82rem;color:#bbb;margin-bottom:6px;display:block;}
 footer a:hover{color:var(--primary);}
 .footer-bottom{text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid #444;font-size:0.78rem;color:#999;}
@@ -153,7 +173,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <header>
   <div class="header-inner">
-    <div class="brand"><span class="brand-name">Aura Glow Store</span><span class="brand-tag">Glow With Confidence</span></div>
+    <div class="brand">
+      <img id="headerLogo" class="brand-logo" src="" alt="Aura Glow Store logo" loading="lazy">
+      <div class="brand-text"><span class="brand-name">Aura Glow Store</span><span class="brand-tag">Glow With Confidence</span></div>
+    </div>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#contact">Contact</a>
     </nav>
@@ -229,6 +252,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </div>
 </div>
 
+<!-- PRODUCT DETAIL MODAL: opens when a customer taps a product card -->
+<div class="modal" id="detailModal">
+  <div class="modal-box detail-box">
+    <button class="modal-close" id="detailCloseBtn" aria-label="Close product details">✕</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
 <section class="contact" id="contact">
   <div class="brand-name">Aura Glow Store</div>
   <div class="brand-tag">Glow With Confidence</div>
@@ -241,7 +272,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <footer>
   <div class="footer-inner">
-    <div><h4 class="brand-name">Aura Glow Store</h4><p>Glow With Confidence</p><p>Kathmandu, Nepal</p></div>
+    <div>
+      <div class="footer-brand-row"><img id="footerLogo" class="footer-logo" src="" alt="Aura Glow Store logo" loading="lazy"><h4 class="brand-name" style="margin-bottom:0;">Aura Glow Store</h4></div>
+      <p>Glow With Confidence</p><p>Kathmandu, Nepal</p>
+    </div>
     <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#contact">Contact</a></div>
     <div><h4>Customer Support</h4><a id="footerWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp: 9768995097</a><p>WhatsApp: 9867872133</p><a href="mailto:tekendraadhikari42@gmail.com">tekendraadhikari42@gmail.com</a></div>
   </div>
@@ -296,6 +330,10 @@ function renderProducts(){
   list.forEach(p=>{
     const card = document.createElement("div");
     card.className = "product-card";
+    card.dataset.id = p.id;
+    card.setAttribute("tabindex","0");
+    card.setAttribute("role","button");
+    card.setAttribute("aria-label","View details for "+p.name);
     const outOfStock = p.stock === false;
     card.innerHTML = `
       ${p.discount ? `<span class="discount-badge">-${p.discount}%</span>` : ""}
@@ -316,6 +354,18 @@ function renderProducts(){
     grid.appendChild(card);
   });
 
+  grid.querySelectorAll(".product-card").forEach(card=>{
+    card.addEventListener("click", (e)=>{
+      if(e.target.closest("button")) return;
+      openProductDetail(parseInt(card.dataset.id));
+    });
+    card.addEventListener("keydown", (e)=>{
+      if((e.key==="Enter" || e.key===" ") && !e.target.closest("button")){
+        e.preventDefault();
+        openProductDetail(parseInt(card.dataset.id));
+      }
+    });
+  });
   grid.querySelectorAll(".add-cart-btn").forEach(btn=>{
     btn.addEventListener("click", ()=>{
       addToCart(parseInt(btn.dataset.id));
@@ -407,7 +457,7 @@ function closeCart(){ cartDrawer.classList.remove("open"); overlay.classList.rem
 document.getElementById("cartOpenBtn").addEventListener("click", openCart);
 document.getElementById("stickyCartBtn").addEventListener("click", openCart);
 document.getElementById("cartCloseBtn").addEventListener("click", closeCart);
-overlay.addEventListener("click", ()=>{ closeCart(); closeOrderModal(); });
+overlay.addEventListener("click", ()=>{ closeCart(); closeOrderModal(); closeDetailModal(); });
 
 const hamburgerBtn = document.getElementById("hamburgerBtn");
 const mobileNav = document.getElementById("mobileNav");
@@ -474,6 +524,53 @@ function closeOrderModal(){
 }
 document.getElementById("orderCloseBtn").addEventListener("click", closeOrderModal);
 
+/* ---------- PRODUCT DETAIL MODAL ---------- */
+const detailModal = document.getElementById("detailModal");
+const detailContent = document.getElementById("detailContent");
+
+function openProductDetail(id){
+  const p = findProduct(id);
+  if(!p) return;
+  const outOfStock = p.stock === false;
+  detailContent.innerHTML = `
+    <div class="detail-img-wrap"><img src="${p.imageUrl}" alt="${p.name}" loading="lazy"></div>
+    <div class="detail-badges">
+      <span class="product-category">${p.category}</span>
+      ${p.discount ? `<span class="discount-badge" style="position:static;">-${p.discount}%</span>` : ""}
+    </div>
+    <h3 class="detail-title">${p.name}</h3>
+    <div class="detail-price-row">
+      <span class="detail-price">Rs. ${p.price}</span>
+      ${p.originalPrice && p.originalPrice > p.price ? `<span class="detail-original">Rs. ${p.originalPrice}</span>` : ""}
+    </div>
+    <p class="detail-desc">${p.description ? p.description : ""}</p>
+    <p class="detail-stock ${outOfStock ? "out" : "in"}">${outOfStock ? "Out of Stock" : "In Stock"}</p>
+    <div class="detail-actions">
+      <button class="add-cart-btn" id="detailAddCart" ${outOfStock?"disabled":""}>Add to Cart</button>
+      <button class="buy-now-btn" id="detailBuyNow" ${outOfStock?"disabled":""}>Buy Now</button>
+    </div>`;
+
+  if(!outOfStock){
+    document.getElementById("detailAddCart").addEventListener("click", ()=>{
+      addToCart(p.id);
+      closeDetailModal();
+    });
+    document.getElementById("detailBuyNow").addEventListener("click", ()=>{
+      closeDetailModal();
+      openBuyNow(p.id);
+    });
+  }
+
+  detailModal.classList.add("show");
+  overlay.classList.add("show");
+}
+
+function closeDetailModal(){
+  detailModal.classList.remove("show");
+  overlay.classList.remove("show");
+}
+document.getElementById("detailCloseBtn").addEventListener("click", closeDetailModal);
+
 document.getElementById("orderForm").addEventListener("submit", function(e){
   e.preventDefault();
   const name = document.getElementById("customerName").value.trim();
@@ -531,7 +628,14 @@ function initApp(){
   renderCategories();
   renderProducts();
   renderCart();
-  const defaultMsg = "Hello Aura Glow Store, I would like to know more about your products.";
+
+  // Apply store branding (name + logo) from the SHOP config below
+  document.getElementById("headerLogo").src = SHOP.logoUrl;
+  document.getElementById("headerLogo").alt = SHOP.name + " logo";
+  document.getElementById("footerLogo").src = SHOP.logoUrl;
+  document.getElementById("footerLogo").alt = SHOP.name + " logo";
+
+  const defaultMsg = "Hello " + SHOP.name + ", I would like to know more about your products.";
   document.getElementById("heroWhatsapp").href = waLink(defaultMsg);
   document.getElementById("floatingWhatsapp").href = waLink(defaultMsg);
   document.getElementById("contactWhatsapp").href = waLink(defaultMsg);
@@ -595,6 +699,19 @@ const products = [
     //     discount: 0
     // }
 ];
+</script>
+
+<!-- ================================
+     STORE BRAND SETTINGS
+     Change the name or logoUrl here to update the shop
+     name and logo everywhere on the site (header, mobile
+     header, footer). No other file section needs editing.
+     ================================ -->
+<script>
+const SHOP = {
+    name: "Aura Glow Store",
+    logoUrl: "https://i.ibb.co/TMNfKxdK/d29e530169fa5d250b5e491f77441b7be0ecf3291f871c05f1e7b50a82445cac.png"
+};
 </script>
 
 <!-- ================================

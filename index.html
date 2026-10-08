@@ -301,7 +301,8 @@ nav.main-nav a:hover{color:var(--primary);}
 .product-img-wrap img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
+  background:var(--secondary);
 }
 .product-info{
   padding:10px 12px 12px;
@@ -668,6 +669,7 @@ nav.main-nav a:hover{color:var(--primary);}
   width:28px;
   height:28px;
   border-radius:50%;
+  z-index:10;
 }
 .submit-order-btn{
   width:100%;
@@ -792,6 +794,7 @@ nav.main-nav a:hover{color:var(--primary);}
   color:#555;
   margin-bottom:16px;
   line-height:1.6;
+  white-space:pre-line;
 }
 .detail-stock{
   font-size:0.8rem;
@@ -808,6 +811,183 @@ nav.main-nav a:hover{color:var(--primary);}
 .detail-actions .buy-now-btn{
   padding:12px 6px;
   font-size:0.85rem;
+}
+
+/* IMAGE GALLERY (product detail) */
+.gallery-wrap{margin:18px auto 14px;max-width:84%;}
+.gallery-main{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--secondary);
+  touch-action:pan-y;
+}
+.gallery-main img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:var(--secondary);
+  transition:opacity 0.2s ease;
+}
+.gallery-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.9);
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  font-size:1.2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  color:var(--dark);
+}
+.gallery-nav.prev{left:8px;}
+.gallery-nav.next{right:8px;}
+.gallery-position{
+  position:absolute;
+  bottom:8px;
+  right:8px;
+  background:rgba(0,0,0,0.55);
+  color:#fff;
+  font-size:0.68rem;
+  padding:2px 9px;
+  border-radius:10px;
+}
+.gallery-thumbs{
+  display:flex;
+  gap:8px;
+  margin-top:8px;
+  overflow-x:auto;
+  padding-bottom:2px;
+  justify-content:center;
+}
+.gallery-thumb{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  background:var(--secondary);
+  border-radius:8px;
+  flex-shrink:0;
+  cursor:pointer;
+  border:2px solid transparent;
+  opacity:0.65;
+  transition:opacity var(--transition), border-color var(--transition);
+}
+.gallery-thumb.active{border-color:var(--primary);opacity:1;}
+/* RELATED PRODUCTS (product detail) - vertical grid like the home page */
+.related-section{
+  margin-top:20px;
+  padding-top:14px;
+  border-top:1px solid var(--secondary);
+}
+.related-title{
+  font-size:0.95rem;
+  font-weight:800;
+  color:var(--primary-dark);
+  margin-bottom:12px;
+}
+.related-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.related-card{
+  background:var(--white);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  cursor:pointer;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.related-card:hover{transform:translateY(-3px);}
+.related-card:active{transform:scale(0.97);}
+.related-card .rc-img{
+  width:100%;
+  aspect-ratio:1/1;
+  background:var(--secondary);
+  overflow:hidden;
+}
+.related-card .rc-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:var(--secondary);
+}
+.related-card .rc-body{
+  padding:10px 12px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  flex:1;
+}
+.related-card .rc-cat{
+  display:inline-block;
+  background:var(--secondary);
+  color:var(--primary-dark);
+  font-size:0.62rem;
+  font-weight:700;
+  padding:2px 8px;
+  border-radius:10px;
+  width:fit-content;
+}
+.related-card .rc-name{
+  font-size:0.85rem;
+  font-weight:700;
+  line-height:1.3;
+  word-break:break-word;
+}
+.related-card .rc-price{
+  margin-top:auto;
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  flex-wrap:wrap;
+  font-size:0.95rem;
+  font-weight:800;
+  color:var(--primary-dark);
+}
+.related-card .rc-price .rc-old{
+  font-size:0.74rem;
+  font-weight:600;
+  color:#999;
+  text-decoration:line-through;
+}
+
+/* WISHLIST HEART ON PRODUCT CARD */
+.wishlist-heart-btn{
+  position:absolute;
+  top:8px;
+  right:8px;
+  z-index:3;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1rem;
+  color:#c9a7a7;
+  box-shadow:0 2px 6px rgba(0,0,0,0.12);
+  transition:transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.wishlist-heart-btn:active{transform:scale(0.85);}
+.wishlist-heart-btn.active{
+  color:#fff;
+  background:var(--primary);
+  animation:heartPop 0.35s ease;
+}
+@keyframes heartPop{
+  0%{transform:scale(1);}
+  40%{transform:scale(1.35);}
+  100%{transform:scale(1);}
 }
 
 /* CONTACT / FOOTER */
@@ -914,6 +1094,11 @@ textarea:focus-visible{
     </nav>
 
     <div class="header-actions">
+      <button class="cart-btn" id="wishlistOpenBtn" aria-label="Open wishlist">
+        ❤️
+        <span class="cart-badge" id="wishlistBadge">0</span>
+      </button>
+
       <button class="cart-btn" id="cartOpenBtn" aria-label="Open cart">
         🛍️
         <span class="cart-badge" id="cartBadge">0</span>
@@ -990,6 +1175,18 @@ textarea:focus-visible{
     <button class="place-order-btn" id="placeOrderBtn" disabled>
       Place Order
     </button>
+  </div>
+</aside>
+
+<!-- WISHLIST DRAWER -->
+<aside class="cart-drawer" id="wishlistDrawer" aria-label="Wishlist">
+  <div class="cart-header">
+    <h3>Your Wishlist</h3>
+    <button class="close-btn" id="wishlistCloseBtn" aria-label="Close wishlist">✕</button>
+  </div>
+
+  <div class="cart-items" id="wishlistItemsContainer">
+    <p class="cart-empty">Your wishlist is empty.</p>
   </div>
 </aside>
 
@@ -1316,6 +1513,14 @@ function renderProducts(){
 
   if(list.length === 0){
 
+    if(productsLoadError){
+      grid.innerHTML =
+        `<p class="no-products">Could not load products right now.<br>` +
+        `<span style="font-size:0.8rem;color:#c0392b;">Error: ${productsLoadError}</span><br>` +
+        `Please check your Supabase setup (RLS policies) or try again shortly.</p>`;
+      return;
+    }
+
     grid.innerHTML =
       '<p class="no-products">No products found in this category yet. Check back soon!</p>';
 
@@ -1356,6 +1561,13 @@ function renderProducts(){
           ? `<span class="stock-badge">Out of Stock</span>`
           : ""
       }
+
+      <button
+        class="wishlist-heart-btn${isWishlisted(p.id) ? " active" : ""}"
+        data-id="${p.id}"
+        type="button"
+        aria-label="${isWishlisted(p.id) ? "Remove from wishlist" : "Add to wishlist"}"
+      >${isWishlisted(p.id) ? "❤️" : "🤍"}</button>
 
       <div class="product-img-wrap">
         <img
@@ -1506,6 +1718,30 @@ function renderProducts(){
         openBuyNow(
           parseInt(btn.dataset.id)
         );
+
+      });
+
+    });
+
+
+  /* WISHLIST HEART TOGGLE */
+
+  grid.querySelectorAll(".wishlist-heart-btn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        const id = parseInt(btn.dataset.id);
+
+        toggleWishlist(id);
+
+        const active = isWishlisted(id);
+
+        btn.classList.toggle("active", active);
+        btn.textContent = active ? "❤️" : "🤍";
+        btn.setAttribute("aria-label", active ? "Remove from wishlist" : "Add to wishlist");
 
       });
 
@@ -1860,6 +2096,8 @@ const overlay =
 
 function openCart(){
 
+  closeWishlist();
+
   cartDrawer.classList.add("open");
 
   overlay.classList.add("show");
@@ -2191,16 +2429,15 @@ function openProductDetail(id){
   const outOfStock =
     p.stock === false;
 
+  const images =
+    (p.imageUrls && p.imageUrls.length)
+      ? p.imageUrls
+      : [p.imageUrl];
+
 
   detailContent.innerHTML = `
 
-    <div class="detail-img-wrap">
-      <img
-        src="${p.imageUrl}"
-        alt="${p.name}"
-        loading="lazy"
-      >
-    </div>
+    ${buildGalleryHtml(images)}
 
     <div class="detail-badges">
 
@@ -2276,9 +2513,43 @@ function openProductDetail(id){
         Buy Now
       </button>
 
+      <button
+        class="add-cart-btn"
+        id="detailWishlistBtn"
+        style="flex:0 0 auto;padding:12px 14px;">
+        ${isWishlisted(p.id) ? "❤️" : "🤍"}
+      </button>
+
     </div>
+
+    ${buildRelatedHtml(p)}
   `;
 
+  initGallery(images);
+
+  /* RELATED PRODUCTS: tap to open that product's details */
+  detailContent.querySelectorAll(".related-card").forEach(card => {
+    const openRelated = () => {
+      openProductDetail(parseInt(card.dataset.id));
+      const box = detailModal.querySelector(".modal-box");
+      if(box) box.scrollTop = 0;
+    };
+    card.addEventListener("click", openRelated);
+    card.addEventListener("keydown", e => {
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        openRelated();
+      }
+    });
+  });
+
+  document
+    .getElementById("detailWishlistBtn")
+    .addEventListener("click", () => {
+      toggleWishlist(p.id);
+      const btn = document.getElementById("detailWishlistBtn");
+      btn.textContent = isWishlisted(p.id) ? "❤️" : "🤍";
+    });
 
   if(!outOfStock){
 
@@ -2319,6 +2590,94 @@ function openProductDetail(id){
 }
 
 
+/* ---------- RELATED PRODUCTS (same category) ---------- */
+
+function buildRelatedHtml(p){
+
+  const related = products
+    .filter(x => x.category === p.category && x.id !== p.id)
+    .slice(0, 8);
+
+  if(related.length === 0) return "";
+
+  return `
+    <div class="related-section">
+      <h4 class="related-title">Related Products</h4>
+      <div class="related-grid">
+        ${related.map(r => `
+          <div class="related-card" data-id="${r.id}" role="button" tabindex="0" aria-label="View ${r.name}">
+            <div class="rc-img"><img src="${r.imageUrl}" alt="${r.name}" loading="lazy"></div>
+            <div class="rc-body">
+              <span class="rc-cat">${r.category}</span>
+              <div class="rc-name">${r.name}</div>
+              <div class="rc-price">
+                <span>Rs. ${r.price}</span>
+                ${r.originalPrice && r.originalPrice > r.price ? `<span class="rc-old">Rs. ${r.originalPrice}</span>` : ""}
+              </div>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+
+/* ---------- IMAGE GALLERY (product detail) ---------- */
+
+function buildGalleryHtml(images){
+
+  const multi = images.length > 1;
+
+  return `
+    <div class="gallery-wrap">
+      <div class="gallery-main" id="galleryMain">
+        <img id="galleryMainImg" src="${images[0]}" alt="Product image" loading="lazy">
+        ${multi ? `
+          <button class="gallery-nav prev" id="galleryPrev" type="button" aria-label="Previous image">‹</button>
+          <button class="gallery-nav next" id="galleryNext" type="button" aria-label="Next image">›</button>
+          <span class="gallery-position" id="galleryPosition">1 / ${images.length}</span>
+        ` : ""}
+      </div>
+      ${multi ? `
+        <div class="gallery-thumbs" id="galleryThumbs">
+          ${images.map((src,i)=>`<img src="${src}" class="gallery-thumb${i===0?" active":""}" data-index="${i}" alt="Thumbnail ${i+1}" loading="lazy">`).join("")}
+        </div>
+      ` : ""}
+    </div>
+  `;
+}
+
+function initGallery(images){
+
+  if(images.length <= 1) return;
+
+  let index = 0;
+  const mainImg = document.getElementById("galleryMainImg");
+  const posEl = document.getElementById("galleryPosition");
+  const thumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
+
+  function show(i){
+    index = (i + images.length) % images.length;
+    mainImg.src = images[index];
+    posEl.textContent = (index + 1) + " / " + images.length;
+    thumbs.forEach((t, ti) => t.classList.toggle("active", ti === index));
+  }
+
+  document.getElementById("galleryPrev").addEventListener("click", () => show(index - 1));
+  document.getElementById("galleryNext").addEventListener("click", () => show(index + 1));
+  thumbs.forEach(t => t.addEventListener("click", () => show(parseInt(t.dataset.index))));
+
+  const mainEl = document.getElementById("galleryMain");
+  let touchStartX = 0;
+  mainEl.addEventListener("touchstart", e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  mainEl.addEventListener("touchend", e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+}
+
+
 function closeDetailModal(){
 
   detailModal.classList.remove(
@@ -2349,6 +2708,8 @@ overlay.addEventListener(
     closeOrderModal();
 
     closeDetailModal();
+
+    closeWishlist();
 
   }
 );
@@ -2418,6 +2779,36 @@ function generateOrderReference(){
     "-" +
     randomPart;
 
+}
+
+
+/* ==========================================================
+   ORDER SUCCESS SOUND (Web Audio API — no external files)
+   Plays only after a successful Supabase order insert.
+   ========================================================== */
+
+function playOrderSuccessSound(){
+  try{
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if(!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+    [880, 1175].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      const start = now + i * 0.11;
+      gain.gain.setValueAtTime(0, start);
+      gain.gain.linearRampToValueAtTime(0.12, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.28);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + 0.3);
+    });
+  }catch(err){
+    console.warn("Order success sound failed:", err);
+  }
 }
 
 
@@ -2630,6 +3021,11 @@ document
         pendingOrder = null;
 
 
+        /* PLAY SUCCESS SOUND */
+
+        playOrderSuccessSound();
+
+
         /* SHOW THANK YOU */
 
         showThankYou(
@@ -2701,13 +3097,17 @@ function waLink(message){
    APP INIT
    ========================================================== */
 
-function initApp(){
+async function initApp(){
+
+  await loadProducts();
 
   renderCategories();
 
   renderProducts();
 
   renderCart();
+
+  renderWishlistBadge();
 
 
   /* BRANDING */
@@ -2765,79 +3165,216 @@ function initApp(){
 
 
 <!-- =================================================
-     ALL PRODUCTS
+     CUSTOM / NEW FEATURES SECTION
+     ---------------------------------------------------
+     Add future features here as their own block (state +
+     functions), then wire up any buttons/markup they need
+     in the sections above. Keeping feature logic isolated
+     here means most new features only need code ADDED to
+     this section instead of touching the rest of the file.
+     (Features that need a new button or badge in the HTML —
+     like the wishlist heart on each card — still need a
+     small markup addition where that button lives; only the
+     feature's state/logic is guaranteed to live here.)
+     ================================================= -->
+<script>
+
+/* ---------- WISHLIST ---------- */
+
+let wishlist = JSON.parse(localStorage.getItem("auraGlowWishlist") || "[]"); // array of product ids
+
+function saveWishlist(){
+  localStorage.setItem("auraGlowWishlist", JSON.stringify(wishlist));
+}
+
+function isWishlisted(id){
+  return wishlist.includes(id);
+}
+
+function toggleWishlist(id){
+  if(isWishlisted(id)){
+    wishlist = wishlist.filter(i => i !== id);
+  }else{
+    wishlist.push(id);
+  }
+  saveWishlist();
+  renderWishlistBadge();
+  renderWishlistDrawer();
+}
+
+function renderWishlistBadge(){
+  const badge = document.getElementById("wishlistBadge");
+  if(!badge) return;
+  badge.textContent = wishlist.length;
+  badge.classList.add("bump");
+  setTimeout(() => badge.classList.remove("bump"), 350);
+}
+
+function renderWishlistDrawer(){
+  const container = document.getElementById("wishlistItemsContainer");
+  if(!container) return;
+
+  const items = wishlist.map(id => findProduct(id)).filter(Boolean);
+
+  if(items.length === 0){
+    container.innerHTML = '<p class="cart-empty">Your wishlist is empty.</p>';
+    return;
+  }
+
+  container.innerHTML = items.map(p => `
+    <div class="cart-item">
+      <img src="${p.imageUrl}" alt="${p.name}" loading="lazy">
+      <div class="cart-item-info">
+        <span class="cart-item-name">${p.name}</span>
+        <span class="cart-item-price">Rs. ${p.price}</span>
+        <div class="qty-controls" style="margin-top:4px;">
+          <button class="add-cart-btn" style="padding:6px 12px;font-size:0.72rem;" data-action="wl-add" data-id="${p.id}" ${p.stock===false ? "disabled" : ""}>Add to Cart</button>
+        </div>
+        <button class="remove-btn" data-action="wl-remove" data-id="${p.id}">Remove</button>
+      </div>
+    </div>
+  `).join("");
+
+  container.querySelectorAll('[data-action="wl-add"]').forEach(btn => {
+    btn.addEventListener("click", () => addToCart(parseInt(btn.dataset.id)));
+  });
+  container.querySelectorAll('[data-action="wl-remove"]').forEach(btn => {
+    btn.addEventListener("click", () => toggleWishlist(parseInt(btn.dataset.id)));
+  });
+}
+
+const wishlistDrawer = document.getElementById("wishlistDrawer");
+
+function openWishlist(){
+  closeCart();
+  renderWishlistDrawer();
+  wishlistDrawer.classList.add("open");
+  overlay.classList.add("show");
+}
+function closeWishlist(){
+  wishlistDrawer.classList.remove("open");
+  overlay.classList.remove("show");
+}
+
+document.getElementById("wishlistOpenBtn").addEventListener("click", openWishlist);
+document.getElementById("wishlistCloseBtn").addEventListener("click", closeWishlist);
+
+</script>
+
+
+<!-- =================================================
+     PRODUCTS — now loaded from Supabase (public.products)
+     DEFAULT_PRODUCTS below is used ONLY to seed the table
+     once, if it is completely empty. After that, all product
+     management happens in admin.html.
      ================================================= -->
 
 <script>
 
-const products = [
-
+const DEFAULT_PRODUCTS = [
   {
-    id: 1,
     name: "SKIN1004 Madagascar Centella",
     category: "Skincare",
     price: 1400,
-    originalPrice: 2100,
-    imageUrl: "https://i.ibb.co/9mhwf5zx/Chat-GPT-Image-Sep-25-2026-10-43-34-AM.png",
+    original_price: 2100,
+    image_url: "https://i.ibb.co/9mhwf5zx/Chat-GPT-Image-Sep-25-2026-10-43-34-AM.png",
     description: "SKIN1004 Madagascar Centella Water-Fit Sun Serum is a viral SPF 50+ PA++++ sunscreen with an ultra-lightweight, watery serum texture. It combines Madagascar Centella Asiatica and Hyaluronic Acid to instantly soothe redness, deeply hydrate, and leave a weightless, zero-white-cast, natural glow.",
     stock: true,
     discount: 27
   },
-
   {
-    id: 2,
     name: "Beauty of Joseon Sunscreen SPF50+ PA++++",
     category: "Skincare",
     price: 1200,
-    originalPrice: 2100,
-    imageUrl: "https://i.ibb.co/zWW0mG6m/file-0000000032148211882b9f10fdf471f2.png",
+    original_price: 2100,
+    image_url: "https://i.ibb.co/zWW0mG6m/file-0000000032148211882b9f10fdf471f2.png",
     description: "Beauty of Joseon Relief Sun is a viral Korean sunscreen that feels like a lightweight moisturizer, offering SPF 50+ PA++++ protection with 30% rice extract for a hydrating, white-cast-free, dewy glow.",
     stock: true,
     discount: 40
   },
-
   {
-    id: 3,
     name: "SP-6 Probiotic Whitening Toothpaste",
     category: "Oral Care",
     price: 899,
-    originalPrice: 1400,
-    imageUrl: "https://i.ibb.co/QFCcJGDf/SP-6-Probiotic-Whitening-Toothpaste-4-9oz-3-Pack-Enamel-Safe-Fluoride-Free.jpg",
+    original_price: 1400,
+    image_url: "https://i.ibb.co/QFCcJGDf/SP-6-Probiotic-Whitening-Toothpaste-4-9oz-3-Pack-Enamel-Safe-Fluoride-Free.jpg",
     description: "SP-6 Probiotic Whitening Toothpaste is a viral oral care product that uses 6 probiotic strains to naturally brighten teeth and eliminate bad breath. It gently dissolves yellow stains without harsh chemicals, keeping the oral microbiome balanced and fresh all day.",
     stock: true,
     discount: 30
-  },
-{
-    id: 4,
-    name: "Mamaearth Tea Tree Pimple Control Face Wash",
-    category: "Face Wash",
-    price: 850,
-    originalPrice: 1300,
-    imageUrl: "https://i.ibb.co/hvMK8Sr/Mamaearth-Tea-Tree-Pimple-Control-Face-Wash-Best-Face-Wash-for-Oily-Acne-Prone-Skin.jpg",
-    description: "Tea tree face wash that gently cleanses the skin and helps keep excess oil and breakouts under control.",
-    stock: true,
-},
-
-  
-  /*
-    ADD NEW PRODUCTS HERE
-
-    Example:
-
-    ,{
-      id: 5,
-      name: "Product Name",
-      category: "Skincare",
-      price: 1000,
-      originalPrice: 1500,
-      imageUrl: "https://real-image-url.jpg",
-      description: "Short description here.",
-      stock: true,
-      discount: 20
-    }
-  */
-
+  }
 ];
+
+let products = [];
+let productsLoadError = null;
+
+/* Convert a Supabase row (snake_case) into the shape the UI uses */
+function normalizeProduct(row){
+  return {
+    id: row.id,
+    name: row.name,
+    category: row.category,
+    price: Number(row.price),
+    originalPrice: row.original_price !== null && row.original_price !== undefined ? Number(row.original_price) : null,
+    imageUrl: row.image_url,
+    imageUrls: Array.isArray(row.image_urls) && row.image_urls.length ? row.image_urls : (row.image_url ? [row.image_url] : []),
+    description: row.description,
+    stock: row.stock,
+    discount: row.discount ? Number(row.discount) : 0
+  };
+}
+
+async function loadProducts(){
+  productsLoadError = null;
+  try{
+    const { data, error } = await supabaseClient
+      .from("products")
+      .select("*")
+      .order("id", { ascending: true });
+
+    if(error){
+      console.error("[Aura Glow] Could not load products from Supabase. Full error:", error);
+      productsLoadError = error.message || "Unknown Supabase error";
+      products = [];
+      return;
+    }
+
+    if(!data || data.length === 0){
+      /* Table is empty — seed it once with the default products. */
+      const { error: seedError } = await supabaseClient
+        .from("products")
+        .insert(DEFAULT_PRODUCTS);
+
+      if(seedError){
+        console.error("[Aura Glow] Could not seed default products. Full error:", seedError);
+        productsLoadError = seedError.message || "Unknown Supabase error";
+        products = [];
+        return;
+      }
+
+      const { data: seeded, error: reFetchError } = await supabaseClient
+        .from("products")
+        .select("*")
+        .order("id", { ascending: true });
+
+      if(reFetchError){
+        console.error("[Aura Glow] Could not re-fetch after seeding. Full error:", reFetchError);
+        productsLoadError = reFetchError.message || "Unknown Supabase error";
+        products = [];
+        return;
+      }
+
+      products = seeded.map(normalizeProduct);
+      return;
+    }
+
+    products = data.map(normalizeProduct);
+
+  }catch(err){
+    console.error("[Aura Glow] Unexpected error loading products:", err);
+    productsLoadError = (err && err.message) ? err.message : "Connection error";
+    products = [];
+  }
+}
 
 </script>
 
@@ -2874,6 +3411,9 @@ const WHATSAPP_NUMBER =
   Start website after all
   settings and products are loaded.
 */
+
+document.getElementById("productGrid").innerHTML =
+  '<p class="no-products">Loading products…</p>';
 
 initApp();
 
